@@ -14,13 +14,12 @@
     <div id="videos" style="margin-top:20px;"></div>
 
     <script>
-        const API_KEY = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=python&type=video&maxResults=1&key=AIzaSyB_POgcGC2FkstJhQBq3cr_pkWPjTpCTgQ
-";
-
+        // Ya no necesitamos la API_KEY aquí
         function buscar() {
             const query = document.getElementById("search").value;
 
-            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=6&key=${API_KEY}`)
+            // Llamamos al endpoint de tu servidor intermedio
+            fetch(`/api/youtube?q=${encodeURIComponent(query)}`)
                 .then(res => res.json())
                 .then(data => {
                     const contenedor = document.getElementById("videos");
